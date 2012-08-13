@@ -19,11 +19,11 @@ Root Privilages for installation
 * Run `sudo sh install.sh`
 * Enter password for user `shell` when prompted
 * Make sure you see this message `Changing shell for shell. Shell changed.`
-* Enter the name of the package manager. Ubuntu: apt-get
+* Enter the name of the package manager. Ubuntu: `apt-get` | Fedora, CentOS, Redhat, etc... : `yum` | Arch: `pacman`. 
 * Make sure sshd is running. 
 
 ## Using the newly created shell
 
-* ssh shell@ip_addr 
+* SSH from some other system. `ssh shell@ip_addr` 
 * Enter the password for shell 
 * And it's magical!. :P
