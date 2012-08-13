@@ -4,14 +4,14 @@ import getpass
 import os
 import socket
 import config
-try:
-	import MySQLdb
-except ImportError:
-	print "Error #191712 Sorry. We are working on this issue. Report to boopathi@live.com about this error"
-	exit()
+# try:
+# 	import MySQLdb
+# except ImportError:
+# 	print "Error #191712 Sorry. We are working on this issue. Report to boopathi@live.com about this error"
+# 	exit()
 
 """Intro Message"""
-intro_message = "Welcome to Pragyan Shell. The list of available commands is minimum "
+intro_message = "Welcome to PyShell. use help to show the list of available commands "
 
 """Allowed Commands"""
 allowed = ["man", "less", "ssh", "pwd", "ls", "grep", "cat", "touch", "clear"];
@@ -25,7 +25,6 @@ os.system("TERM=\"linux\"");
 username = getpass.getuser();
 hostname = socket.gethostname();
 ipaddr = socket.gethostbyname(socket.gethostname());
-#hostname = "pragyan"
 
 def parseCommand(command):
 	args = command.split()
@@ -59,7 +58,7 @@ def isVulnerable(args):
 			return True;
 	return False;
 
-def exitShell(message = "Bye. Thanks for using Pragyan Shell."):
+def exitShell(message = "Bye. Thanks for using PyShell."):
 	os.system("clear");
 	print message;
 	exit(0)
@@ -73,16 +72,16 @@ def displayHelp():
 def displayError(message = "Restricted Access"):
 	print message + '\n';
 
-def enterLog(command):
-	logFile = open("/usr/pshell/log/" + username + ".log", "a");
-	logFile.write(command + "\n");
-	logFile.close();
-	#Enter log into db for verification
-	con = MySQLdb.connect(host="10.0.0.163", user="pragyan11", passwd="andromeda", db="pragyan11_treasure")
-	cur = con.cursor()
-	cur.execute("insert into `treasure_hunt` (`username`,`command`, `hostname`, `ipaddr`) values('"+username +"','"+command +"','"+hostname+"', '"+ipaddr+"')")
-	con.commit()
-	con.close()
+# def enterLog(command):
+# 	logFile = open("/usr/pshell/log/" + username + ".log", "a");
+# 	logFile.write(command + "\n");
+# 	logFile.close();
+# 	#Enter log into db for verification
+# 	con = MySQLdb.connect(host="10.0.0.163", user="pragyan11", passwd="andromeda", db="pragyan11_treasure")
+# 	cur = con.cursor()
+# 	cur.execute("insert into `treasure_hunt` (`username`,`command`, `hostname`, `ipaddr`) values('"+username +"','"+command +"','"+hostname+"', '"+ipaddr+"')")
+# 	con.commit()
+# 	con.close()
 
 print intro_message;
 while(True):
@@ -100,8 +99,8 @@ while(True):
 	"""Handle Null Argument"""
 	if command == "":
 		continue;
-	"""Get Command Name for checking permission"""
-	enterLog(command)
+
+    #enterLog(command)
 	cmd = parseCommand(command)
 	
 	"""Check for Vulnerability Status"""
